@@ -4,7 +4,7 @@ const brightness = document.querySelector('#brightness');
 const sepia = document.querySelector('#sepia');
 const saturate = document.querySelector('#saturate');
 const img = document.querySelector('#photo');
-
+const reset = document.querySelector('#reset');
 const defaults = {
 	grayscale: 0,
 	contrast: 100,
@@ -20,6 +20,7 @@ brightness.addEventListener('input', updateFilterValue);
 sepia.addEventListener('input', updateFilterValue);
 saturate.addEventListener('input', updateFilterValue);
 
+reset.addEventListener('click', resetFilterValue);
 
 function updateFilterValue() {
 	reset.disabled = false;
@@ -30,4 +31,28 @@ function updateFilterValue() {
 	sepia(${sepia.value}%)
 	saturate(${saturate.value}%)
 	`
+}
+
+function resetFilterValue() {
+
+	img.style.filter = `
+	grayscale(${defaults.grayscale}%)
+	contrast(${defaults.contrast}%)
+	brightness(${defaults.brightness}%)
+	sepia(${defaults.sepia}%)
+	saturate(${defaults.saturate}%)
+	`
+	grayscale.value =
+		defaults.grayscale;
+	contrast.value =
+		defaults.contrast;
+	brightness.value =
+		defaults.brightness;
+	sepia.value =
+		defaults.sepia;
+	saturate.value =
+		defaults.saturate;
+
+	reset.disabled = true;
+
 }
