@@ -5,6 +5,8 @@ const sepia = document.querySelector('#sepia');
 const saturate = document.querySelector('#saturate');
 const img = document.querySelector('#photo');
 const reset = document.querySelector('#reset');
+const imgUrl = document.querySelector('#img-url');
+
 const defaults = {
 	grayscale: 0,
 	contrast: 100,
@@ -21,6 +23,7 @@ sepia.addEventListener('input', updateFilterValue);
 saturate.addEventListener('input', updateFilterValue);
 
 reset.addEventListener('click', resetFilterValue);
+imgUrl.addEventListener('change', updateImageUrl);
 
 function updateFilterValue() {
 	reset.disabled = false;
@@ -55,4 +58,9 @@ function resetFilterValue() {
 
 	reset.disabled = true;
 
+}
+
+function updateImageUrl() {
+	const imageUrl = imgUrl.value;
+	img.setAttribute('src', imageUrl);
 }
